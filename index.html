@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <style>
+		
+        #hk_map {
+            background-color: white;
+        }
+
+        .district-borders {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 0.5px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            pointer-events: none;
+        }
+		
+		#hk_map2 {
+            background-color: white;
+        }
+
+        .district-borders2 {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 0.5px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            pointer-events: none;
+        }
+		
+
+        #tooltip {
+            position: absolute;
+            display: none;
+			pointer-events: none;
+        }
+		
+		#tooltip2 {
+			position: absolute;
+			display: none;
+			pointer-events: none;
+		}
+		
+		#tooltip3 {
+            position: absolute;
+            display: none;
+			pointer-events: none;
+        }
+		
+		#tooltip4 {
+            position: absolute;
+            display: none;
+			pointer-events: none;
+        }
+
+        .link {
+            stroke: #ccc;
+        }
+		#tooltip5 {
+            position: absolute;
+            display: none;
+			pointer-events: none;
+        }
+    </style>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>
+        Population and Household 
+        Statistics Analysed by 
+        District Council District 
+        2017
+        </title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="index.html">
+                <img src="images/logo.png" alt="Homepage">
+            </a>
+        </div>
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <div class="header-nav__content">
+                <h3>Navigation</h3>
+
+                <ul class="header-nav__list">
+                    <li class="current"><a class="smoothscroll" href="#home" title="home">Home</a></li>
+                    <li><a class="smoothscroll" href="#about" title="about">Introduction</a></li>
+                    <li><a class="smoothscroll" href="#clients" title="clients">Clients</a></li>
+                    <li><a class="smoothscroll" href="#no1" title="services">Key Findings #1</a></li>
+					<li><a class="smoothscroll" href="#no2" title="services2">Key Findings #2</a></li>
+					<li><a class="smoothscroll" href="#no3" title="services3">Key Findings #3</a></li>
+					<li><a class="smoothscroll" href="#no4" title="services4">Key Findings #4</a></li>
+                    <li><a class="smoothscroll" href="#works" title="works">Works</a></li>
+                    
+                </ul>
+
+<!--
+                <p>Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href='#0'>voluptatem</a> porro iusto
+                    sequi veritatis libero enim. Iusto id suscipit veritatis neque reprehenderit.</p>
+-->
+
+                <ul class="header-nav__social">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                    </li>
+                </ul>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav> <!-- end header-nav -->
+
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+
+
+    <!-- home
+    ================================================== -->
+    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/hero-bg.jpg"
+        data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+
+        <div class="overlay"></div>
+        <div class="shadow-overlay"></div>
+
+        <div class="home-content">
+
+            <div class="row home-content__main">
+
+                <h3>HKSAR</h3>
+                <h1>Population and Household <br>
+                    Statistics Analysed by <br>
+                    District Council District <br>
+                    2017
+                </h1>
+
+                <div class="home-content__buttons">
+                    <a href="#services" class="smoothscroll btn btn--stroke">
+                        Highlights
+                    </a>
+                    <a href="#about" class="smoothscroll btn btn--stroke">
+                        Introduction
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="home-content__scroll">
+                <a href="#about" class="scroll-link smoothscroll">
+                    <span>Scroll Down</span>
+                </a>
+            </div>
+
+            <div class="home-content__line"></div>
+
+        </div> <!-- end home-content -->
+
+
+        <!-- <ul class="home-social">
+            <li>
+                <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-behance" aria-hidden="true"></i><span>Behance</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
+            </li>
+        </ul> -->
+        <!-- end home-social -->
+
+    </section> <!-- end s-home -->
+
+
+    <!-- about
+    ================================================== -->
+
+    <section id='about' class="s-about">
+
+        <div class="row section-header has-bottom-sep" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead subhead--dark">Introduction</h3>
+                <h1 class="display-1 display-1--light">Background</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row about-desc" data-aos="fade-up">
+            <div class="col-full">
+                <p style="text-align: justify">
+                    This report presents statistics on the demographic and socio-economic characteristics of the
+                    population in mid-2017 at the District Council (DC) district level. These statistics are primarily
+                    computed based on data collected in the General Household Survey (GHS) in January to December 2017
+                    and the 2017 mid-year population estimates by age and sex in each DC district as control totals.
+                </p>
+            </div>
+
+        </div> <!-- end about-desc -->
+
+        <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
+
+            <div class="col-block stats__col ">
+                <div class="stats__count">18</div>
+                <h5>Districts</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">99</div>
+                <h5>Percent of Population</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">12</div>
+                <h5>Months of Research</h5>
+            </div>
+            <div class="col-block stats__col">
+                <div class="stats__count">11</div>
+                <h5>Statistical Tables</h5>
+            </div>
+
+        </div> <!-- end about-stats -->
+
+        <div class="about__line"></div>
+
+    </section> <!-- end s-about -->
+
+    <!-- clients
+    ================================================== -->
+    <section id="clients" class="s-clients">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">About</h3>
+                <h1 class="display-2">18 District Council district</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row clients-outer" data-aos="fade-up">
+            <div class="col-full">
+                <div class="clients">
+
+                    <a href="http://www.districtcouncils.gov.hk/central/" title="" class="clients__slide"><img src="images/clients/CentralandWestern.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/wc/" title="" class="clients__slide"><img src="images/clients/WanChaiDistrict.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/east/" title="" class="clients__slide"><img src="images/clients/EasternDistrict.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/south/" title="" class="clients__slide"><img src="images/clients/SouthernDistrict.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/ytm/" title="" class="clients__slide"><img src="images/clients/YauTsimMong.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/ssp/" title="" class="clients__slide"><img src="images/clients/ShamShuiPo.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/kc/" title="" class="clients__slide"><img src="images/clients/KowloonCity.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/wts/" title="" class="clients__slide"><img src="images/clients/Wong_Tai_Sin.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/kt/" title="" class="clients__slide"><img src="images/clients/KwunTong.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/kwt/" title="" class="clients__slide"><img src="images/clients/KwaiTsing.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/tw/" title="" class="clients__slide"><img src="images/clients/TsuenWan.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/tm/" title="" class="clients__slide"><img src="images/clients/TuenMun.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/yl/" title="" class="clients__slide"><img src="images/clients/YuenLong.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/north/" title="" class="clients__slide"><img src="images/clients/NorthDistrict.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/tp/" title="" class="clients__slide"><img src="images/clients/TaiPo.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/st/" title="" class="clients__slide"><img src="images/clients/Shatin.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/sk/" title="" class="clients__slide"><img src="images/clients/SaiKung.png" /></a>
+                    <a href="http://www.districtcouncils.gov.hk/island/" title="" class="clients__slide"><img src="images/clients/Islands.png" /></a>
+                </div> <!-- end clients -->
+            </div> <!-- end col-full -->
+        </div> <!-- end clients-outer -->
+
+        <div class="row clients-testimonials" data-aos="fade-up">
+            <div class="col-full">
+                <div class="testimonials">
+
+                    <div class="testimonials__slide">
+
+                        <p><b>The Central and Western District Council</b> is the district council for the Central and
+                            Western District in Hong Kong. Central and Western District currently consists of 15
+                            members, of which the district is divided into 15 constituencies, electing a total of 15
+                            members. The latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/CentralandWestern.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Wan Chai District Council</b> is the district council for the Wan Chai District in Hong
+                            Kong. It is one of 18 district councils. Wan Chai District currently consists of 13
+                            members, of which the district is divided into 13 constituencies, electing a total of 13
+                            members. The latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/WanChaiDistrict.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Eastern District Council</b> is the district council for the Eastern District in Hong
+                            Kong. It is one of 18 district council. Eastern District currently consists of 35 members,
+                            of which the district is divided into 35 constituencies, electing a total of 35 members.
+                            The latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/EasternDistrict.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+                    <div class="testimonials__slide">
+
+                        <p><b>Southern District Council</b> is the district council for the Southern District in Hong
+                            Kong. It is one of 18 district council. Southern District currently consists of 17 members,
+                            of which the district is divided into 17 constituencies, electing a total of 17 members.
+                            The latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/SouthernDistrict.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Yau Tsim Mong District Council</b> is the district council for the Yau Tsim Mong District
+                            in Hong Kong. It is one of 18 district council. Yau Tsim Mong District currently consists
+                            of 19 members, of which the district is divided into 19 constituencies, electing a total of
+                            19 members. It was merged from the Mong Kok District Board and Yau Tsim District Board in
+                            1994 due to the significant drop of the population in the districts. The latest election
+                            was held on 22 November 2015.</p>
+
+                        <img src="images/clients/YauTsimMong.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Sham Shui Po District Council</b> is the district council for the Sham Shui Po District
+                            in Hong Kong. It is one of 18 district councils. Sham Shui Po District currently consists
+                            of 23 members, of which the district is divided into 23 constituencies, electing a total of
+                            23 members. The latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/ShamShuiPo.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Kowloon City District Council</b> is the district council for the Kowloon City District
+                            in Hong Kong. It is one of 18 district council. Kowloon City District currently consists of
+                            24 members, of which the district is divided into 24 constituencies, electing a total of 24
+                            members. The latest election was held in 2015.</p>
+
+                        <img src="images/clients/KowloonCity.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Wong Tai Sin District Council</b> is the district council for the Wong Tai Sin District
+                            in Hong Kong. It is one of 18 district council. Wong Tai Sin District currently consists of
+                            25 members, of which the district is divided into 25 constituencies, electing a total of 25
+                            members. The latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/Wong_Tai_Sin.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Kwun Tong District Council</b> is the district council for the Kwun Tong District in Hong
+                            Kong. It is one of 18 district council. Kwun Tong District currently consists of 37
+                            members, of which the district is divided into 37 constituencies, electing a total of 37
+                            members. The council was created in April 1981 under the District Board Ordinance 1981. The
+                            latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/KwunTong.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Kwai Tsing District Council</b> is the district council for the Kwai Tsing District in
+                            Hong Kong, being one of the 18 district councils in Hong Kong. It currently consists of 30
+                            members of which 29 are directly elected from the 29 constituencies of the district, one
+                            ex-officio member who is the Tsing Yi Rural Committee chairman. The latest election was
+                            held on 22 November 2015.</p>
+
+                        <img src="images/clients/KwaiTsing.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Tsuen Wan District Council</b> is the district council for the Tsuen Wan District in Hong
+                            Kong. It is one of 18 district council. Sha Tin District currently consists of 20 members,
+                            of which the district is divided into 18 constituencies, electing a total of 18 with 2 ex
+                            officio members who is the Tsuen Wan and Ma Wan rural committee chairmen. The latest
+                            election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/TsuenWan.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Tuen Mun District Council</b> is the District Council of Tuen Mun District, in the New
+                            Territories. The Council consists of 30 members with 29 of those elected through first past
+                            the post system every four years with 1 ex officio member who is the Tuen Mun Rural
+                            Committee chairman. The latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/TuenMun.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Yuen Long District Council</b> is the district council for the Yuen Long District in Hong
+                            Kong. It is one of 18 district councils. Yuen Long District currently consists of 41
+                            members, of which the district is divided into 35 constituencies, electing a total of 35
+                            with 6 ex officio members who are the Shap Pat Heung, San Tin, Ha Tsuen, Kam Tin, Ping Shan
+                            and Pat Heung rural committee chairmen. The latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/YuenLong.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>North District Council</b> is one of the 18 Hong Kong district councils and represents
+                            the North District. Consisting of 22 members, the district council is drawn from 18
+                            constituencies, which elect 18 members, along with four ex officio members who are the Ta
+                            Kwu Ling, Sheung Shui, Sha Tau Kok and Fanling rural committee chairmen. The latest
+                            election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/NorthDistrict.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Tai Po District Council</b> is the district council for the Tai Po District in Hong Kong.
+                            It is one of 18 district council. Tai Po District currently consists of 21 members, of
+                            which the district is divided into 19 constituencies, electing a total of 19 with 2
+                            ex-officio members who are the Tai Po and Sai Kung North rural committee chairmen. The
+                            latest election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/TaiPo.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Sha Tin District Council</b> is the district council for the Sha Tin District in Hong
+                            Kong. It is one of 18 district council. Sha Tin District currently consists of 39 members,
+                            of which the district is divided into 38 constituencies, electing a total of 38 with 1
+                            ex-officio member who is the Sha Tin rural committee chairman. The latest election was held
+                            on 22 November 2015.</p>
+
+                        <img src="images/clients/Shatin.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Sai Kung District Council</b> is the district council for the Sai Kung District in Hong
+                            Kong and one of 18 district councils. Sai Kung District currently consists of 29 members,
+                            of which the district is divided into 27 constituencies, electing a total of 27 with two
+                            ex-officio members who are the Hang Hau and Sai Kung rural committee chairmen. The latest
+                            election was held on 22 November 2015.</p>
+
+                        <img src="images/clients/SaiKung.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+
+                    <div class="testimonials__slide">
+
+                        <p><b>Islands District Council</b> is the district council for the Islands District in Hong
+                            Kong. It is one of 18 district council. Islands District currently consists of 18 members,
+                            of which the district is divided into 10 constituencies, electing a total of 10 with 8
+                            ex-officio members who is the Peng Chau, Lamma North, Tung Chung, Lamma South, Tai O,
+                            Lantau South, Mui Wo and Cheung Chau rural committee chairmen. The latest election was held
+                            on 22 November 2015.</p>
+
+                        <img src="images/clients/Islands.png" alt="Author image" class="testimonials__avatar">
+
+
+                    </div>
+                </div><!-- end testimonials -->
+
+            </div> <!-- end col-full -->
+        </div> <!-- end client-testimonials -->
+
+    </section> <!-- end s-clients -->
+    <section id="no1" style="background-color:white">
+        <div style="background-color: white">
+            <div class="row section-header has-bottom-sep" data-aos="fade-up">
+                <div class="col-full">
+                   <p><br></p>
+                    <h3 class="subhead">Key findings #1</h3>
+                    <h1 class="display-2">Labour force participation rate by District Council district</h1>
+                </div>
+            </div>
+            <div class="row" style="display: flex;
+  justify-content: center;" data-aos="fade-up" data-aos-duration="1000">
+                <svg id="hk_map" width="800" height="540"></svg>
+            </div>
+            <div class="card" style="width: 18rem;" id="tooltip">
+                <div class="card-body">
+                    <h5 class="card-title" id="title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted" id="subtitle">Card subtitle</h6>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <div class="row services-list block-1-2 block-tab-full" style="background-color: white">
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-megaphone"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Overall</h3>
+                    <p>The labour force participation rate in Hong Kong is 61.1%
+                    </p>
+                </div>
+            </div>
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-megaphone"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">The highest</h3>
+                    <p>Central and Western District has the highest labour force participation rate at 65.1%.
+                    </p>
+                </div>
+            </div>
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-megaphone"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">The lowest</h3>
+                    <p>North District has the lowest labour force participation rate at 58%.
+                    </p>
+                </div>
+            </div>
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-megaphone"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Mean</h3>
+                    <p>The mean of labour force participation rate among 18 districts is 61.4%.
+                    </p>
+                </div>
+            </div>
+        </div>
+		
+	</section>
+        <section id="no2" style="background-color:white">
+
+            <div class="row section-header has-bottom-sep" data-aos="fade-up">
+                <div class="col-full">
+                   <p><br><br><br></p><p><br><br><br></p>
+                    <h3 class="subhead">Key findings #2</h3>
+                    <h1 class="display-2">General household data categorised by District Council district</h1>
+                </div>
+            </div> <!-- end section-header -->
+			<p><br></p>
+            <div style="display: flex;
+        justify-content: center;" class="col-sm-12 col-lg-6" data-aos="fade-up"
+                data-aos-duration="1000">
+			
+                
+                <svg id="hk_map2" width="800" height="480"></svg>
+                </div>
+                <div class="card" style="width: 18rem;" id="tooltip2">
+                    <div class="card-body">
+                        <h5 class="card-title" id="title2">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted" id="subtitle2">Card subtitle</h6>
+                    </div>
+                </div>
+            </div>
+           
+            <div style="display: flex;
+        justify-content: center;" data-aos="fade-up" data-aos-duration="1000">
+                <canvas class="col-sm-12 col-lg-10" id="myChart"></canvas>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+
+            <script>
+                function drawChart1() {
+                    var ctx = document.getElementById("myChart").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ["1", "2", "3", "4", "5", ">=6"],
+                            datasets: [{
+                                label: '# of Votes',
+                                data: [18, 27.6, 24.4, 18.7, 8, 3.2],
+                                backgroundColor: [
+                                    'rgba(106, 202, 202, 1)',
+                                    'rgba(95,180,180,1.00)',
+                                    'rgba(68,153,153,1.00)',
+                                    'rgba(41,141,141,1.00)',
+                                    'rgba(28,109,109,1.00)',
+                                    'rgba(8,87,87,1.00)'
+                                ],
+                                borderColor: [
+                                    'rgba(0,142,142,1)',
+                                    'rgba(0,142,142,1)',
+                                    'rgba(0,142,142,1)',
+                                    'rgba(0,142,142,1)',
+                                    'rgba(0,142,142,1)',
+                                    'rgba(0,142,142,1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            title: {
+                                display: true,
+                                fontSize: 20,
+                                text: 'Percentage of Domestic households by District Council district and household size'
+
+                            }
+
+                        }
+                    });
+                }
+                drawChart1();
+            </script>
+
+            <div class="row services-list block-1-1 block-tab-full">
+
+                <div class="col-block service-item" data-aos="fade-up">
+                    <p><br></p>
+                    <div class="service-icon">
+                        <i class="icon-paint-brush"></i>
+                    </div>
+                    <div class="service-text">
+                        <h3 class="h2">General Household Survey</h3>
+                        <p>The GHS is based on a sample of quarters selected from all permanent quarters and quarters
+                            in segments which are for residential purpose in Hong Kong in accordance with a
+                            scientifically designed
+                            sampling scheme. The sampling units are:</p>
+                        <p>(a) permanent quarters in built-up areas(including urban areas, new towns and major
+                            developments); and</p>
+                        <p>(b) segments in non-built-up areas (i.e. each containing about 10 quarters on average).</p>
+                    </div>
+                </div>
+
+                <div class="col-block service-item" data-aos="fade-up">
+                    <div class="service-icon">
+                        <i class="icon-paint-brush"></i>
+                    </div>
+                    <div class="service-text">
+                        <h3 class="h2">Data information</h3>
+                        <p>Detailed information on the labour force characteristics of the population for Hong Kong as
+                            awhole is published in the Quarterly Report on General Household Survey. The present report
+                            contains statistics pertaining to a broad range of the population and household
+                            characteristics in each DC district.</p>
+
+                    </div>
+                </div>
+
+
+            </div> <!-- end services-list -->
+
+        </section> <!-- end s-services -->
+
+
+        <!-- services
+    ================================================== -->
+
+  <!-- services
+    ================================================== -->
+        <section id="no3" style="background-color: white">
+
+        <div class="row section-header has-bottom-sep" data-aos="fade-up">
+            <div class="col-full">
+               <p><br><br><br></p><p><br><br><br></p>
+               
+                <h3 class="subhead">Key Findings #3</h3>
+                <h1 class="display-2">Median monthly household income by District Council district</h1>
+            </div>
+        </div> <!-- end section-header -->
+		
+		<div class="row" style="display: flex;
+  justify-content: center;" data-aos="fade-up" data-aos-duration="1000">
+		 <svg id="circles" width="800" height="480">
+    </svg>
+	</div>
+	
+	<div class="card" style="width: 18rem;" id="tooltip3">
+        <div class="card-body">
+            <h5 class="card-title" id="title3">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted" id="subtitle3">Card subtitle</h6>
+        </div>
+    </div>
+		
+		
+		<div class="col-lg-6" style="display: flex;
+  justify-content: center;" data-aos="fade-up" data-aos-duration="1000">
+	<svg id="circleMap" width="800" height="800">
+    </svg>
+		</div>
+
+    <div class="card" style="width: 18rem;" id="tooltip4">
+        <div class="card-body">
+            <h5 class="card-title" id="title4">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted" id="subtitle4">Card subtitle</h6>
+        </div>
+    </div>	
+		
+	<div class="col-lg-6" data-aos="fade-up" data-aos-duration="1000" style="background-color: aliceblue; top:90px">
+		
+                
+                <div class="service-text">	
+					<h3 class="h2" style="color: #1aaeb0;">Three Income Clusters</h3>
+                    <p><ul>
+					<li><span style="color: #22c1c3; font-weight: 600; ">High Income Group (HK$40.3k - 41.5k)</span> <br> Central & Western, Wai Chai</li>
+					<li><span style="color: #22c1c3; font-weight: 600; ">Middle Income Group (HK$28k - 33.5k)</span> <br> Sai Kung, Eastern, Southern, Tsuen Wan, Yau Tsim Mong, Islands, Shatin, Kowloon City, Tai Po</li>
+					<li><span style="color: #22c1c3; font-weight: 600; ">Low Income Group (HK$21.1k - 24.3k)</span> <br> Yuen Long, Tuen Mun, Northern, Kwai Tsing, Wong Tai Sin, Sham Shui Po, Kwun Tong</li>
+					</ul>
+                    </p>
+					<div data-aos="fade-up" data-aos-duration="1200">
+					<h3 class="h2" style="color: #1aaeb0" >Large divergence</h3>
+                    <p><ul><li>Almost <span style="color: #22c1c3; font-weight: bold; text-decoration: underline"> DOUBLING </span>the lowest median household income HK$21.5k, <br>the highest one reaches HK$41.5k. </li><li>The households with higher income concentrates in Hong Kong Island.</li> </ul>
+						<br></p></div>
+                </div>
+            </div>	
+		
+		
+		
+		
+
+        <div class="row services-list block-1-2 block-tab-full">
+
+           
+
+        </div> <!-- end services-list -->
+
+    </section> <!-- end s-services -->
+
+
+
+
+
+	    <!-- key findings #4 
+    ================================================== -->
+<section id="no4"  style= "background-color: #FFFFFF">
+    
+	    <div class="row section-header has-bottom-sep" data-aos="fade-up" style="display: block;">
+            <div class="col-full">
+               <p><br><br><br></p><p><br><br><br></p>
+                <h3 class="subhead">Key Findings #4</h3>
+                <h1 class="display-2">Median age categorised by District Council district</h1>
+            </div>
+        </div> 
+        <div class="col-lg-12" style="display: flex;
+  justify-content: center;" data-aos="fade-up" data-aos-duration="1000">
+            <svg id="circleside" width="800" height="800">
+            </svg>
+        </div>
+
+        <div class="card" style="width: 18rem;" id="tooltip5">
+            <div class="card-body">
+                <h5 class="card-title" id="title5">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted" id="subtitle5">Card subtitle</h6>
+            </div>
+        </div>
+        <p><br><br><br><br><br></p>
+        <div class="row services-list block-1-2 block-tab-full" style="background-color: white">
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-megaphone"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">General</h3>
+                    <p>The range of median range lies between 41 to 45 years old.
+                    </p>
+                </div>
+            </div>
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <i class="icon-megaphone"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">The highest</h3>
+                    <p>The highest data lies in Wong Tai Sin District.
+                    </p>
+                </div>
+                
+            </div>
+
+
+
+			<div class="service-text; col-12" data-aos="fade-up" style="background-color: aliceblue; display: block">
+                    <h3 class="h3">Population and Household 
+Statistics Analysed by 
+District Council District 
+2017 (Full Report):</h3>
+                    <p><a href="https://www.statistics.gov.hk/pub/B11303012017AN17B0100.pdf">https://www.statistics.gov.hk/pub/B11303012017AN17B0100.pdf</a>
+
+                    </p>
+                </div>
+            </div> <!-- end services-list -->
+            
+    </section> <!-- end s-services -->
+
+<div style="background-color: white">
+<p><br></p><p><br></p><p><br></p>
+</div>
+    <!-- works
+    ================================================== -->
+    <section id='works' class="s-works" style= "background-color: black">
+
+        <div class="intro-wrap" style= "background-color: black">
+
+            <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
+                <div class="col-full">
+                    <h3 class="subhead">Recent Works</h3>
+                    <h1 class="display-2 display-2--light">Check out some of our latest works</h1>
+                </div>
+            </div> <!-- end section-header -->
+
+        </div> <!-- end intro-wrap -->
+
+        <div class="row works-content">
+            <div class="col-full masonry-wrap">
+                <div class="masonry">
+
+                    <div class="masonry__brick" data-aos="fade-up">
+                        <div class="item-folio">
+
+                            <div class="item-folio__thumb">
+                                <a href="images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link"
+                                    data-size="1050x700">
+                                    <img src="images/portfolio/lady-shutterbug.jpg" srcset="images/portfolio/lady-shutterbug.jpg 1x, images/portfolio/lady-shutterbug@2x.jpg 2x"
+                                        alt="">
+                                </a>
+                            </div>
+
+                            <div class="item-folio__text">
+                                <h3 class="item-folio__title">
+                                    Hong Kong Poverty Situation Report 2017
+                                </h3>
+                                <p class="item-folio__cat">
+                                    Statistical Reports
+                                </p>
+                            </div>
+
+                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                <i class="icon-link"></i>
+                            </a>
+
+                            <div class="item-folio__caption">
+                                <p><a href="https://www.statistics.gov.hk/pub/B9XX0005E2017AN17E0100.pdf">https://www.statistics.gov.hk/pub/B9XX0005E2017AN17E0100.pdf</a></p>
+                            </div>
+
+                        </div>
+                    </div> <!-- end masonry__brick -->
+
+                    <div class="masonry__brick" data-aos="fade-up">
+                        <div class="item-folio">
+
+                            <div class="item-folio__thumb">
+                                <a href="images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link"
+                                    data-size="1050x700">
+                                    <img src="images/portfolio/woodcraft.jpg" srcset="images/portfolio/woodcraft.jpg 1x, images/portfolio/woodcraft@2x.jpg 2x"
+                                        alt="">
+                                </a>
+                            </div>
+
+                            <div class="item-folio__text">
+                                <h3 class="item-folio__title">
+                                    Hong Kong Poverty Situation Report on Ethnic Minorities 2016
+                                </h3>
+                                <p class="item-folio__cat">
+                                    Statistical Reports
+                                </p>
+                            </div>
+
+                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                <i class="icon-link"></i>
+                            </a>
+
+                            <div class="item-folio__caption">
+                                <p><a href="https://www.statistics.gov.hk/pub/B9XX0004E2016XXXXE0100.pdf">https://www.statistics.gov.hk/pub/B9XX0004E2016XXXXE0100.pdf</a></p>
+                            </div>
+
+                        </div>
+                    </div> <!-- end masonry__brick -->
+
+                    <div class="masonry__brick" data-aos="fade-up">
+                        <div class="item-folio">
+
+                            <div class="item-folio__thumb">
+                                <a href="images/portfolio/gallery/g-beetle.jpg" class="thumb-link"
+                                    data-size="1050x700">
+                                    <img src="images/portfolio/the-beetle.jpg" srcset="images/portfolio/the-beetle.jpg 1x, images/portfolio/the-beetle@2x.jpg 2x"
+                                        alt="">
+                                </a>
+                            </div>
+
+                            <div class="item-folio__text">
+                                <h3 class="item-folio__title">
+                                    Hong Kong Life Tables 2011-2066
+                                </h3>
+                                <p class="item-folio__cat">
+                                    Statistical Reports
+                                </p>
+                            </div>
+
+                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                <i class="icon-link"></i>
+                            </a>
+
+                            <div class="item-folio__caption">
+                                <p><a href="https://www.statistics.gov.hk/pub/B1120016072017XXXXB0100.pdf">https://www.statistics.gov.hk/pub/B1120016072017XXXXB0100.pdf</a></p>
+                            </div>
+
+                        </div>
+                    </div> <!-- end masonry__brick -->
+
+                    <div class="masonry__brick" data-aos="fade-up">
+                        <div class="item-folio">
+
+                            <div class="item-folio__thumb">
+                                <a href="images/portfolio/gallery/g-grow-green.jpg" class="thumb-link"
+                                    data-size="1050x700">
+                                    <img src="images/portfolio/grow-green.jpg" srcset="images/portfolio/grow-green.jpg 1x, images/portfolio/grow-green@2x.jpg 2x"
+                                        alt="">
+                                </a>
+                            </div>
+
+                            <div class="item-folio__text">
+                                <h3 class="item-folio__title">
+                                    Hong Kong 2016 Population By-census - Thematic Report : Older Persons
+                                </h3>
+                                <p class="item-folio__cat">
+
+                                    Statistical Reports
+                                </p>
+                            </div>
+
+                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                <i class="icon-link"></i>
+                            </a>
+
+                            <div class="item-folio__caption">
+                                <p><a href="https://www.statistics.gov.hk/pub/B11201052016XXXXB0100.pdf">https://www.statistics.gov.hk/pub/B11201052016XXXXB0100.pdf</a></p>
+                            </div>
+
+                        </div>
+                    </div> <!-- end masonry__brick -->
+
+                    <div class="masonry__brick" data-aos="fade-up">
+                        <div class="item-folio">
+
+                            <div class="item-folio__thumb">
+                                <a href="images/portfolio/gallery/g-guitarist.jpg" class="thumb-link"
+                                    data-size="1050x700">
+                                    <img src="images/portfolio/guitarist.jpg" srcset="images/portfolio/guitarist.jpg 1x, images/portfolio/guitarist@2x.jpg 2x"
+                                        alt="">
+                                </a>
+                            </div>
+
+                            <div class="item-folio__text">
+                                <h3 class="item-folio__title">
+                                    Supplementary Poverty Line Analysis: Expenditure Patterns of Poor Households in 2015
+                                </h3>
+                                <p class="item-folio__cat">
+                                    Statistical Reports
+
+                                </p>
+                            </div>
+
+                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                <i class="icon-link"></i>
+                            </a>
+
+                            <div class="item-folio__caption">
+                                <p><a href="https://www.statistics.gov.hk/pub/B9XX0003E2015XXXXE0100.pdf">https://www.statistics.gov.hk/pub/B9XX0003E2015XXXXE0100.pdf</a></p>
+                            </div>
+
+                        </div>
+                    </div> <!-- end masonry__brick -->
+
+                    <div class="masonry__brick" data-aos="fade-up">
+                        <div class="item-folio">
+
+                            <div class="item-folio__thumb">
+                                <a href="images/portfolio/gallery/g-palmeira.jpg" class="thumb-link"
+                                    data-size="1050x700">
+                                    <img src="images/portfolio/palmeira.jpg" srcset="images/portfolio/palmeira.jpg 1x, images/portfolio/palmeira@2x.jpg 2x"
+                                        alt="">
+                                </a>
+                            </div>
+
+                            <div class="item-folio__text">
+                                <h3 class="item-folio__title">
+                                    Hong Kong 2011 Population Census Thematic Report : Single Parents
+                                </h3>
+                                <p class="item-folio__cat">
+                                    Statistical Reports
+                                </p>
+                            </div>
+
+                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                <i class="icon-link"></i>
+                            </a>
+
+                            <div class="item-folio__caption">
+                                <p><a href="https://www.statistics.gov.hk/pub/B11200652013XXXXB0100.pdf">https://www.statistics.gov.hk/pub/B11200652013XXXXB0100.pdf</a></p>
+                            </div>
+
+                        </div>
+                    </div> <!-- end masonry__brick -->
+
+                </div> <!-- end masonry -->
+            </div> <!-- end col-full -->
+        </div> <!-- end works-content -->
+
+    </section> <!-- end s-works -->
+
+
+
+
+
+    <!-- contact
+    ================================================== -->
+    
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+
+        <!-- <div class="row footer-main">
+
+            <div class="col-six tab-full left footer-desc">
+
+                <div class="footer-logo"></div>
+                Proin eget tortor risus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Praesent sapien
+                massa, convallis a pellentesque nec, egestas non nisi. Mauris blandit aliquet elit, eget tincidunt nibh
+                pulvinar a. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quaerat voluptas
+                autem necessitatibus vitae aut.
+
+            </div>
+
+            <div class="col-six tab-full right footer-subscribe">
+
+                <h4>Get Notified</h4>
+                <p>Quia quo qui sed odit. Quaerat voluptas autem necessitatibus vitae aut non alias sed quia. Ut itaque
+                    enim optio ut excepturi deserunt iusto porro.</p>
+
+                <div class="subscribe-form">
+                    <form id="mc-form" class="group" novalidate>
+                        <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address"
+                            required="">
+                        <input type="submit" name="subscribe" value="Subscribe">
+                        <label for="mc-email" class="subscribe-message"></label>
+                    </form>
+                </div>
+
+            </div>
+
+        </div> end footer-main -->
+
+        <div class="row footer-bottom">
+
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>© Copyright Glint 2017</span>
+                    <span>Site Template by <a href="https://www.colorlib.com/">Colorlib</a></span>
+                </div>
+
+                <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div> <!-- end footer-bottom -->
+
+    </footer> <!-- end footer -->
+
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button> <button class="pswp__button pswp__button--fs"
+                        title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div> <!-- end photoSwipe background -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+
+        var abuses = [
+            { district: "Central & Western", cases: 65.1, map_id: 1 },
+            { district: "Wan Chai", cases: 64.6, map_id: 15 },
+            { district: "Eastern", cases: 61.6, map_id: 2 },
+            { district: "Southern", cases: 63.3, map_id: 11 },
+            { district: "Yau Tsim Mong", cases: 63, map_id: 17 },
+            { district: "Sham Shui Po", cases: 61.1, map_id: 10 },
+            { district: "Kowloon City", cases: 61.1, map_id: 4 },
+            { district: "Wong Tai Sin", cases: 58.8, map_id: 16 },
+            { district: "Kwun Tong", cases: 59.2, map_id: 6 },
+            { district: "Kwai Tsing", cases: 59.9, map_id: 5 },
+            { district: "Tsuen Wan", cases: 63.4, map_id: 13 },
+            { district: "Tuen Mun", cases: 61.4, map_id: 14 },
+            { district: "Yuen Long", cases: 60.0, map_id: 18 },
+            { district: "Northern", cases: 58.0, map_id: 7 },
+            { district: "Tai Po", cases: 60.3, map_id: 12 },
+            { district: "Shatin", cases: 60.2, map_id: 9 },
+            { district: "Sai Kung", cases: 63.1, map_id: 8 },
+            { district: "Islands", cases: 61.9, map_id: 3 }
+        ];
+
+        var svg = d3.select("#hk_map");
+
+        var hongKongCenter = [114.21, 22.35];
+        var projection = d3.geoMercator().center(hongKongCenter).scale(60000);
+        var geoPath = d3.geoPath(projection);
+
+        d3.json("HKG_adm.json").then(function (topoData) {
+
+            console.log(topoData);
+
+            svg.append("g")
+                .attr("class", "districts")
+                .selectAll("path")
+                .data(topojson.feature(topoData, topoData.objects.HKG_adm1_1).features)
+                .enter().append("path")
+                .attr("class", "district")
+                .attr("d", geoPath);
+
+            svg.append("path")
+                .attr("class", "district-borders")
+                .attr("d", geoPath(topojson.mesh(topoData, topoData.objects.HKG_adm1_1, function (a, b) { return a !== b; })));
+
+
+            var districts = d3.selectAll(".district");
+
+            districts.data(abuses.sort(function (x, y) {
+                return d3.ascending(x.map_id, y.map_id);
+            }));
+
+            var myColorScale = d3.scaleLinear().domain([58, 61, 66]).range(["#a9fff9", "#08cfae", "#008f77"]);
+
+            districts.style("fill", function (d) {
+                return myColorScale(d.cases);
+            })
+
+
+
+            districts.data(abuses.sort(function (x, y) {
+                return d3.ascending(x.map_id, y.map_id);
+            }));
+
+
+            var tooltip = d3.select("#tooltip");
+            var title = d3.select("#title");
+            var subtitle = d3.select("#subtitle");
+
+
+            districts
+                .on("mouseover", function () {
+                    tooltip.style("display", "block");
+                    d3.select(this).style("opacity", 0.5);
+                })
+                .on("mouseout", function () {
+                    tooltip.style("display", "none");
+                    d3.select(this).style("opacity", 1);
+                })
+                .on("mousemove", function (d) {
+                    tooltip
+                        .style("left", (d3.event.pageX +20) + "px")
+                        .style("top", (d3.event.pageY ) + "px");
+						console.log(d3.event.pageX, d3.event.pageY);
+                    title.text(d.district);
+                    subtitle.text(d.cases + " % of labour force participation.");
+                });
+
+
+
+
+
+        });
+
+
+
+
+    </script>
+
+    <script>
+
+        var abuses2 = [
+            { district2: "Central & Western", cases2: 2.7, map_id2: 1 },
+            { district2: "Wan Chai", cases2: 2.6, map_id2: 15 },
+            { district2: "Eastern", cases2: 2.9, map_id2: 2 },
+            { district2: "Southern", cases2: 3.0, map_id2: 11 },
+            { district2: "Yau Tsim Mong", cases2: 2.6, map_id2: 17 },
+            { district2: "Sham Shui Po", cases2: 2.6, map_id2: 10 },
+            { district2: "Kowloon City", cases2: 2.8, map_id2: 4 },
+            { district2: "Wong Tai Sin", cases2: 2.8, map_id2: 16 },
+            { district2: "Kwun Tong", cases2: 2.8, map_id2: 6 },
+            { district2: "Kwai Tsing", cases2: 2.9, map_id2: 5 },
+            { district2: "Tsuen Wan", cases2: 2.8, map_id2: 13 },
+            { district2: "Tuen Mun", cases2: 2.7, map_id2: 14 },
+            { district2: "Yuen Long", cases2: 2.9, map_id2: 18 },
+            { district2: "Northern", cases2: 2.9, map_id2: 7 },
+            { district2: "Tai Po", cases2: 3.0, map_id2: 12 },
+            { district2: "Shatin", cases2: 2.9, map_id2: 9 },
+            { district2: "Sai Kung", cases2: 3.0, map_id2: 8 },
+            { district2: "Islands", cases2: 2.7, map_id2: 3 }
+        ];
+
+        var svg2 = d3.select("#hk_map2");
+
+        var hongKongCenter2 = [114.21, 22.35];
+        var projection2 = d3.geoMercator().center(hongKongCenter2).scale(60000);
+        var geoPath2 = d3.geoPath(projection2);
+
+
+        d3.json("HKG_adm.json").then(function (topoData) {
+
+            console.log(topoData);
+
+            svg2.append("g")
+                .attr("class", "districts2")
+                .selectAll("path")
+                .data(topojson.feature(topoData, topoData.objects.HKG_adm1_1).features)
+                .enter().append("path")
+                .attr("class", "district2")
+                .attr("d", geoPath2);
+
+            svg2.append("path")
+                .attr("class", "district-borders2")
+                .attr("d", geoPath2(topojson.mesh(topoData, topoData.objects.HKG_adm1_1, function (a, b) { return a !== b; })));
+
+            //district abuse
+            var districts2 = d3.selectAll(".district2");
+
+            //districts.data(abuses);
+            districts2.data(abuses2.sort(function (x, y) {
+                return d3.ascending(x.map_id2, y.map_id2);
+            }));
+
+
+            var myColorScale2 = d3.scaleLinear().domain([2.6, 2.8, 3.0]).range(["#6acaca", "#449999", "#1c6d6d"]);
+
+            districts2.style("fill", function (d) {
+                return myColorScale2(d.cases2);
+                //	return blue;
+            })
+
+            var tooltip2 = d3.select("#tooltip2");
+            var title2 = d3.select("#title2");
+            var subtitle2 = d3.select("#subtitle2");
+
+            districts2
+                .on("mouseover", function (d) {
+                    d3.select(this).style("opacity", 0.5);
+                    tooltip2.style("display", "block");
+                })
+                .on("mouseout", function (d) {
+                    d3.select(this).style("opacity", 1);
+                    tooltip2.style("display", "none");
+                })
+                .on("mousemove", function (d) {
+                    tooltip2
+                        .style("left", (d3.event.pageX + 20) + "px")
+                        .style("top", (d3.event.pageY ) + "px");
+						console.log(d3.event.pageX, d3.event.pageY);
+
+                    title2.text(d.district2);
+                    subtitle2.text("Average household size:" + d.cases2);
+
+                });
+
+        });
+
+    </script>
+
+
+    <script>
+
+        var abuses3 = [
+            { district: "Central & Western", cases: 41.5, map_id: 1 },
+            { district: "Wan Chai", cases: 40.3, map_id: 15 },
+            { district: "Eastern", cases: 32.0, map_id: 2 },
+            { district: "Southern", cases: 31.6, map_id: 11 },
+            { district: "Yau Tsim Mong", cases: 28.3, map_id: 17 },
+            { district: "Sham Shui Po", cases: 22.0, map_id: 10 },
+            { district: "Kowloon City", cases: 27.3, map_id: 4 },
+            { district: "Wong Tai Sin", cases: 22.6, map_id: 16 },
+            { district: "Kwun Tong", cases: 21.1, map_id: 6 },
+            { district: "Kwai Tsing", cases: 23.0, map_id: 5 },
+            { district: "Tsuen Wan", cases: 29.4, map_id: 13 },
+            { district: "Tuen Mun", cases: 24.0, map_id: 14 },
+            { district: "Yuen Long", cases: 24.3, map_id: 18 },
+            { district: "Northern", cases: 23.3, map_id: 7 },
+            { district: "Tai Po", cases: 28.0, map_id: 12 },
+            { district: "Shatin", cases: 28.0, map_id: 9 },
+            { district: "Sai Kung", cases: 33.5, map_id: 8 },
+            { district: "Islands", cases: 29.9, map_id: 3 }
+        ];
+
+        var myScale3 = d3.scaleLinear().domain([21, 26.5, 41.5]).range([100, 400, 700]); //project the range into the values that fit our svg
+        var myColorScale3 = d3.scaleLinear().domain([21, 41.5]).range(["#a2ffee", "#22c1c3"]);
+
+        var svg3 = d3.select("#circles");
+
+        // Code for Force Layout Simulator
+        var simulation3 = d3.forceSimulation()
+            //.force("collide", d3.forceCollide().radius(30))
+            .force("collide", d3.forceCollide().radius(function (d) { return d.cases + 5; }))
+            //.force("center", d3.forceCenter(400, 240));;
+            .force('x', d3.forceX().x(function (d) {
+                return myScale3(d.cases);
+            }))
+            .force('y', d3.forceY().strength(0.01).y(function (d) {
+                return 480;
+            }));
+
+        svg3.append("g")
+            .attr("transform", "translate(0," + 450 + ")")
+            .call(d3.axisBottom(myScale3));
+
+        simulation3.nodes(abuses3); //18 nodes
+
+        var node3 = svg3.selectAll(".node") //but there is no node 
+            .data(abuses3) //unmatch between them
+            .enter().append("g") //generate a group for each element in the array
+            .attr("class", "node"); //assgin a class to each of the group
+
+        console.log(node3);
+        //return;
+
+        //node.append('circle')
+        //  .attr('r', 30)
+        //.attr('fill', "blue");
+
+        node3.append('circle')
+            .attr('r', function (d) {
+                return d.cases;
+            })
+            .attr('fill', function (d) {
+                return myColorScale3(d.cases);
+            });
+
+        simulation3.on("tick", function () {
+            node3
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+        });
+
+        var circles = d3.selectAll("circle");
+
+        var tooltip3 = d3.select("#tooltip3");
+        var title3 = d3.select("#title3");
+        var subtitle3 = d3.select("#subtitle3");
+
+        circles
+            .on("mouseover", function () {
+                tooltip3.style("display", "block");
+                d3.select(this).style("opacity", 0.2);
+            })
+            .on("mouseout", function () {
+                tooltip3.style("display", "none");
+                d3.select(this).style("opacity", 1);
+            })
+            .on("mousemove", function (d) {
+                tooltip3
+                    .style("left", (d3.event.pageX + 50) + "px")
+                    .style("top", (d3.event.pageY ) + "px");
+
+                title3.text(d.district);
+                subtitle3.text(("HK$ " + d.cases + "k income"));
+            });
+
+
+
+    </script>
+
+
+    <script>
+
+        var abuses4 = [
+            { district: "Central & Western", cases: 41.5, map_id: 1 },
+            { district: "Wan Chai", cases: 40.3, map_id: 15 },
+            { district: "Eastern", cases: 32.0, map_id: 2 },
+            { district: "Southern", cases: 31.6, map_id: 11 },
+            { district: "Yau Tsim Mong", cases: 28.3, map_id: 17 },
+            { district: "Sham Shui Po", cases: 22.0, map_id: 10 },
+            { district: "Kowloon City", cases: 27.3, map_id: 4 },
+            { district: "Wong Tai Sin", cases: 22.6, map_id: 16 },
+            { district: "Kwun Tong", cases: 21.1, map_id: 6 },
+            { district: "Kwai Tsing", cases: 23.0, map_id: 5 },
+            { district: "Tsuen Wan", cases: 29.4, map_id: 13 },
+            { district: "Tuen Mun", cases: 24.0, map_id: 14 },
+            { district: "Yuen Long", cases: 24.3, map_id: 18 },
+            { district: "Northern", cases: 23.3, map_id: 7 },
+            { district: "Tai Po", cases: 28.0, map_id: 12 },
+            { district: "Shatin", cases: 28.0, map_id: 9 },
+            { district: "Sai Kung", cases: 33.5, map_id: 8 },
+            { district: "Islands", cases: 29.9, map_id: 3 }
+        ];
+
+        var edges4 = [
+            { "source": 0, "target": 1 },
+            { "source": 0, "target": 3 },
+            { "source": 0, "target": 4 },
+            { "source": 0, "target": 17 },
+            { "source": 1, "target": 2 },
+            { "source": 1, "target": 3 },
+            { "source": 1, "target": 4 },
+            { "source": 2, "target": 3 },
+            { "source": 2, "target": 6 },
+            { "source": 2, "target": 8 },
+            { "source": 4, "target": 5 },
+            { "source": 4, "target": 6 },
+            { "source": 5, "target": 6 },
+            { "source": 5, "target": 9 },
+            { "source": 5, "target": 15 },
+            { "source": 6, "target": 7 },
+            { "source": 6, "target": 8 },
+            { "source": 6, "target": 15 },
+            { "source": 7, "target": 8 },
+            { "source": 7, "target": 15 },
+            { "source": 7, "target": 16 },
+            { "source": 8, "target": 16 },
+            { "source": 9, "target": 10 },
+            { "source": 9, "target": 15 },
+            { "source": 10, "target": 11 },
+            { "source": 10, "target": 12 },
+            { "source": 10, "target": 14 },
+            { "source": 10, "target": 15 },
+            { "source": 10, "target": 17 },
+            { "source": 11, "target": 12 },
+            { "source": 12, "target": 13 },
+            { "source": 12, "target": 14 },
+            { "source": 13, "target": 14 },
+            { "source": 14, "target": 15 },
+            { "source": 14, "target": 16 },
+            { "source": 15, "target": 16 }
+        ];
+
+        var myScale4 = d3.scaleLinear().domain([21.100, 41.500]).range([100, 700]); //project the range into the values that fit our svg
+        var myColorScale4 = d3.scaleLinear().domain([21.100, 41.500]).range(["#a2ffee", "#22c1c3"]);
+
+        var svg4 = d3.select("#circleMap");
+
+        // Code for Force Layout Simulator
+        // var simulation = d3.forceSimulation()
+        //.force("collide", d3.forceCollide().radius(30))
+        //   .force("collide", d3.forceCollide().radius(function (d) { return d.cases + 5; }))
+        //.force("center", d3.forceCenter(400, 240));;
+        //  .force('x', d3.forceX().x(function (d) {
+        //       return myScale(d.cases);
+        //  }))
+        //  .force('y', d3.forceY().strength(0.01).y(function (d) {
+        //        return 480;
+        //    }));
+
+        // var simulation = d3.forceSimulation()
+        //     .force("link", d3.forceLink().id(function (d) { return d.index }))
+        //    .force("center", d3.forceCenter(400, 400))
+
+        var simulation4 = d3.forceSimulation()
+            .force("charge", d3.forceManyBody().strength(-700).distanceMin(20).distanceMax(600))
+            .force("link", d3.forceLink().id(function (d) { return d.index }))
+            .force("center", d3.forceCenter(400, 400))
+
+
+        //svg.append("g")
+        //     .attr("transform", "translate(0," + 450 + ")")
+        //   .call(d3.axisBottom(myScale));
+
+        simulation4.nodes(abuses4); //18 nodes
+
+        var link4 = svg4.selectAll(".link")
+            .data(edges4)
+            .enter()
+            .append("line")
+            .attr("class", "link");
+
+        var node4 = svg4.selectAll(".node") //but there is no node 
+            .data(abuses4) //unmatch between them
+            .enter().append("g") //generate a group for each element in the array
+            .attr("class", "node"); //assgin a class to each of the group
+
+        console.log(node4);
+        //return;
+
+        //node.append('circle')
+        //  .attr('r', 30)
+        //.attr('fill', "blue");
+
+        simulation4.force("link").links(edges4);
+
+
+
+        node4.append('circle')
+            .attr("class", "node4Circle")
+            .attr('r', function (d) {
+                return d.cases;
+            })
+            .attr('fill', function (d) {
+                return myColorScale4(d.cases);
+            });
+
+        node4.append("text")
+            .attr("dx", -60)
+            .attr("dy", 20)
+            .style("font-family", "sans-serif")
+            .style("font-weight", "bold")
+            .style("font-size", "13px")
+            .style("fill", "#057576")
+            .text(function (d) {
+                return d.district
+            });
+
+        simulation4.on("tick", function () {
+            link4
+                .attr("x1", function (d) {
+                    return d.source.x; //the corresponding node's x value
+                })
+                .attr("y1", function (d) {
+                    return d.source.y;
+                })
+                .attr("x2", function (d) {
+                    return d.target.x;
+                })
+                .attr("y2", function (d) {
+                    return d.target.y;
+                });
+
+            node4
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+        });
+
+
+        var circles4 = d3.selectAll(".node4Circle");
+
+        var tooltip4 = d3.select("#tooltip4");
+        var title4 = d3.select("#title4");
+        var subtitle4 = d3.select("#subtitle4");
+
+        circles4
+            .on("mouseover", function () {
+                tooltip4.style("display", "block");
+                d3.select(this).style("opacity", 0.2);
+            })
+            .on("mouseout", function () {
+                tooltip4.style("display", "none");
+                d3.select(this).style("opacity", 1);
+            })
+            .on("mousemove", function (d) {
+                tooltip4
+                    .style("left", (d3.event.pageX + 40) + "px")
+                    .style("top", (d3.event.pageY) + "px");
+			console.log(d3.event.pageX, d3.event.pageY);
+                title4.text(d.district);
+                subtitle4.text("HK$ " + d.cases + "k income ");
+            });
+
+
+    </script>
+
+
+<script>
+        var abuses5 = [
+            { district: "Central & Western", cases: 43, map_id: 1 },
+            { district: "Wan Chai", cases: 44, map_id: 15 },
+            { district: "Eastern", cases: 43, map_id: 2 },
+            { district: "Southern", cases: 43, map_id: 11 },
+            { district: "Yau Tsim Mong", cases: 42, map_id: 17 },
+            { district: "Sham Shui Po", cases: 42, map_id: 10 },
+            { district: "Kowloon City", cases: 43, map_id: 4 },
+            { district: "Wong Tai Sin", cases: 45, map_id: 16 },
+            { district: "Kwun Tong", cases: 43, map_id: 6 },
+            { district: "Kwai Tsing", cases: 43, map_id: 5 },
+            { district: "Tsuen Wan", cases: 43, map_id: 13 },
+            { district: "Tuen Mun", cases: 43, map_id: 14 },
+            { district: "Yuen Long", cases: 41, map_id: 18 },
+            { district: "Northern", cases: 42, map_id: 7 },
+            { district: "Tai Po", cases: 43, map_id: 12 },
+            { district: "Shatin", cases: 44, map_id: 9 },
+            { district: "Sai Kung", cases: 42, map_id: 8 },
+            { district: "Islands", cases: 41, map_id: 3 }
+        ];
+
+        var edges5 = [
+            { "source": 0, "target": 1 },
+            { "source": 0, "target": 3 },
+            { "source": 0, "target": 4 },
+            { "source": 0, "target": 17 },
+            { "source": 1, "target": 2 },
+            { "source": 1, "target": 3 },
+            { "source": 1, "target": 4 },
+            { "source": 2, "target": 3 },
+            { "source": 2, "target": 6 },
+            { "source": 2, "target": 8 },
+            { "source": 4, "target": 5 },
+            { "source": 4, "target": 6 },
+            { "source": 5, "target": 6 },
+            { "source": 5, "target": 9 },
+            { "source": 5, "target": 15 },
+            { "source": 6, "target": 7 },
+            { "source": 6, "target": 8 },
+            { "source": 6, "target": 15 },
+            { "source": 7, "target": 8 },
+            { "source": 7, "target": 15 },
+            { "source": 7, "target": 16 },
+            { "source": 8, "target": 16 },
+            { "source": 9, "target": 10 },
+            { "source": 9, "target": 15 },
+            { "source": 10, "target": 11 },
+            { "source": 10, "target": 12 },
+            { "source": 10, "target": 14 },
+            { "source": 10, "target": 15 },
+            { "source": 10, "target": 17 },
+            { "source": 11, "target": 12 },
+            { "source": 12, "target": 13 },
+            { "source": 12, "target": 14 },
+            { "source": 13, "target": 14 },
+            { "source": 14, "target": 15 },
+            { "source": 14, "target": 16 },
+            { "source": 15, "target": 16 }
+        ];
+
+        var myScale5 = d3.scaleLinear().domain([41, 45]).range([30, 40]); //project the range into the values that fit our svg
+        var myColorScale5 = d3.scaleLinear().domain([41, 45]).range(["#74ebd5", "#ACB6E5"]);
+
+        var svg5 = d3.select("#circleside");
+
+        // Code for Force Layout Simulator
+        // var simulation = d3.forceSimulation()
+        //.force("collide", d3.forceCollide().radius(30))
+        //   .force("collide", d3.forceCollide().radius(function (d) { return d.cases + 5; }))
+        //.force("center", d3.forceCenter(400, 240));;
+        //  .force('x', d3.forceX().x(function (d) {
+        //       return myScale(d.cases);
+        //  }))
+        //  .force('y', d3.forceY().strength(0.01).y(function (d) {
+        //        return 480;
+        //    }));
+
+        // var simulation = d3.forceSimulation()
+        //     .force("link", d3.forceLink().id(function (d) { return d.index }))
+        //    .force("center", d3.forceCenter(400, 400))
+
+        var simulation5 = d3.forceSimulation()
+            .force("charge", d3.forceManyBody().strength(-700).distanceMin(20).distanceMax(400))
+            .force("link", d3.forceLink().id(function (d) { return d.index }))
+            .force("center", d3.forceCenter(400, 400))
+
+
+        //svg.append("g")
+        //     .attr("transform", "translate(0," + 450 + ")")
+        //   .call(d3.axisBottom(myScale));
+
+        simulation5.nodes(abuses5); //18 nodes
+
+        var link5 = svg5.selectAll(".link")
+            .data(edges5)
+            .enter()
+            .append("line")
+            .attr("class", "link");
+
+        var node5 = svg5.selectAll(".node") //but there is no node 
+            .data(abuses5) //unmatch between them
+            .enter().append("g") //generate a group for each element in the array
+            .attr("class", "node"); //assgin a class to each of the group
+
+        console.log(node5);
+        //return;
+
+        //node.append('circle')
+        //  .attr('r', 30)
+        //.attr('fill', "blue");
+
+        simulation5.force("link").links(edges5);
+
+
+
+        node5.append('circle')
+            .attr("class", "node5Circle")
+            .attr('r', function (d) {
+                return myScale5(d.cases);
+            })
+            .attr('fill', function (d) {
+                return myColorScale5(d.cases);
+            });
+
+        node5.append("text")
+            .attr("dx", -60)
+            .attr("dy", 20)
+            .style("font-family", "sans-serif")
+            .style("font-weight", "bold")
+            .style("font-size", "13px")
+            .style("fill", "#057576")
+            .text(function (d) {
+                return d.district
+            });
+
+        simulation5.on("tick", function () {
+            link5
+                .attr("x1", function (d) {
+                    return d.source.x; //the corresponding node's x value
+                })
+                .attr("y1", function (d) {
+                    return d.source.y;
+                })
+                .attr("x2", function (d) {
+                    return d.target.x;
+                })
+                .attr("y2", function (d) {
+                    return d.target.y;
+                });
+
+            node5
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+        });
+
+
+        var circles5 = d3.selectAll(".node5Circle");
+        console.log(circles5);
+        var tooltip5 = d3.select("#tooltip5");
+        var title5 = d3.select("#title5");
+        var subtitle5 = d3.select("#subtitle5");
+        console.log(subtitle5);
+        circles5
+            .on("mouseover", function () {
+                tooltip5.style("display", "block");
+                d3.select(this).style("opacity", 0.2);
+            })
+            .on("mouseout", function () {
+                tooltip5.style("display", "none");
+                d3.select(this).style("opacity", 1);
+            })
+            .on("mousemove", function (d) {
+                tooltip5
+                    .style("left", (d3.event.pageX + 40) + "px")
+                    .style("top", (d3.event.pageY ) + "px");
+					console.log(d3.event.pageX, d3.event.pageY);
+                title5.text(d.district);
+                subtitle5.text("Average age: " + d.cases + "years old.");
+            });
+
+
+</script>
+
+
+</body>
+
+</html>
